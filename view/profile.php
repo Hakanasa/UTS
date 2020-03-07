@@ -39,21 +39,16 @@
 <div class="container">
     <form action="index.php" method="post">
 		    <div>
-            <input type='hidden' name='do' value='logout.php'> 
-            <button type='submit' name='loc' value='login.php' class='btn btn-danger' style="float: right">Logout</button> 
+      
+            <button type='submit' name='loc' value='data.php' class='btn btn-danger' style="float: right">Beranda</button> 
 		    </div>
 	  </form>
-    <form action="index.php" method="post">
-		    <div>
 
-            <button type='submit' name='loc' value='profile.php' class='btn btn-danger' style="float: right">Profile</button> 
-		    </div>
-	  </form>
 </div>
 <br>
 <div class="container">
 profil
-    <?php
+<?php
         session_start();
         $user_Sekarang = $_SESSION['username'];
         $sql = "SELECT * FROM user where username ='$user_Sekarang'";
@@ -89,6 +84,7 @@ profil
 
         }
     ?>
+ 
 </div>
 </body>
 </html>
