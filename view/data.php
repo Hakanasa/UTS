@@ -52,17 +52,17 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse d-flex flex-row-reverse" id="collapsibleNavbar">
       <ul class="navbar-nav">
-        <form action="index.php" method="post">
+        <form action="index.php" method="post" class="px-2">
     		    <div>
                 <input type='hidden' name='do' value='logout.php'>
-                <button type='submit' name='loc' value='login.php' class='btn btn-danger' style="float: right">Logout</button>
+                <button type='submit' name='loc' value='login.php' class='btn btn-secondary' style="float: right">Logout</button>
     		    </div>
     	  </form>
-        <form action="index.php" method="post">
+        <form action="index.php" method="post" class="px-2">
     		    <div>
-                <button type='submit' name='loc' value='profile.php' class='btn btn-danger' style="float: right">Profile</button>
+                <button type='submit' name='loc' value='profile.php' class='btn btn-secondary' style="float: right">Profile</button>
     		    </div>
     	  </form>
       </ul>
@@ -104,17 +104,21 @@
       <div class="col-sm-6 text-left">
         <div class="container" style="margin-top:30px">
       <!-- DropDown Start-->
-        <p>
-          <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <p class="d-flex justify-content-end">
+          <a class="btn btn-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             New Post
           </a>
         </p>
         <div class="collapse" id="collapseExample">
         <h2>Whats in your mind?</h2>
           <form action = "index.php" method="post">
-            <textarea class="form-control" rows="4" name="description" placeholder="Apa yang kamu pikirkan?" ></textarea>
+            <div class="py-3">
+              <textarea class="form-control" rows="4" name="description" placeholder="Apa yang kamu pikirkan?" ></textarea>
+          </div>
             <input type='hidden' name='do' value='add_comment.php'>
-            <button name='submit' value='data.php' class='btn btn-default'>Post</button>
+            <div class="d-flex justify-content-end">
+              <button name='submit' value='data.php' class='btn btn-dark'>Post</button>
+            </div>
             <input type='hidden' name='loc' value='data.php'>
           </form>
         </div>
