@@ -53,6 +53,12 @@
 <br>
 <div class="container">
 profil
+    <form action = "index.php" method="post">
+      <textarea class="form-control" rows="4" name="description" placeholder="Apa yang kamu pikirkan?" ></textarea>
+      <input type='hidden' name='do' value='add_comment.php'> 
+      <button name='submit' value='data.php' class='btn btn-default'>Post</button>  
+      <input type='hidden' name='loc' value='data.php'> 
+    </form>
     <?php
         session_start();
         $user_Sekarang = $_SESSION['username'];
