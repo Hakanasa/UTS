@@ -48,6 +48,7 @@
 <div class="container">
 profil
     <?php
+        session_start();
         $user_Sekarang = $_SESSION['username'];
         $sql = "SELECT * FROM user where username ='$user_Sekarang'";
         $result = $conn -> query($sql);
