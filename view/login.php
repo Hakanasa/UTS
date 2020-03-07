@@ -29,7 +29,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-user"></i> </span>
 					</div>
-						<input class="form-control" type="text" name="username" id="username" placeholder="Masukan Email" autofocus>
+						<input class="form-control" type="text" name="username" id="username" placeholder="Masukan Username" autofocus>
 				</div>
 			</div>
 
