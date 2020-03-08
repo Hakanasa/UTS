@@ -10,6 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
   <style>
   .back-to-top {
     cursor: pointer;
@@ -123,6 +124,53 @@
           </form>
         </div>
       <!-- DropDown End-->
+      <form action = "index.php" method="post">
+      <table id="example" class="table table-striped table-bordered" style="width:100%">
+ <?php
+   ini_set('error_reporting', 0);
+   ini_set('display_errors', 0);
+   session_start();
+   $user_tln = $_SESSION['username'];
+   $sql_tl = "SELECT * FROM timeline where username ='$user_tln'";
+   $result_tl = $conn -> query($sql_tl);
+   $user_tl=array();
+
+   foreach($result_tl as $row_tl)
+   array_push(
+       $user_tl, 
+           new Timeline(
+               $row_tl['username'],
+               $row_tl['post_id'],
+               $row_tl['description'],
+               $row_tl['time']
+       
+           )
+   );
+   foreach($user_tl as $row_tl){
+    echo "<tr>";
+    echo "<td>".$row_tl->getDeskripsitl()."</td>";
+    echo "<td>"; 
+    echo "<div class='col-sm-3'>";                
+    echo "<form method='post' action='index.php'>";      
+   // echo "<div class='form-group'>";
+  //  echo "<input type ='text' class='form-control' name='komentar' placeholder='komentar'";    
+   // echo "</div>";
+  //  echo "<input type='hidden' name='do' value='komentar.php'>";
+    echo "<input type='hidden' name='Post_id' value='".$row_tl->getPostid()."'>";       
+     
+    echo "<input type='hidden' name='loc' value='komentar.php'>";
+    echo "<button type='submit' name='submit'>
+        Comment 
+        </button>";                
+    echo "</form>";                
+    echo "</div>";
+    echo "</tr>";
+     
+   }
+ 
+ ?>
+</table>
+</form>
         </div>
       </div>
     </div>
