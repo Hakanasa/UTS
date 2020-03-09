@@ -187,7 +187,7 @@
          echo'<div class="card-body">';
          echo'<div class="row">';
          echo'<div class="col-md-2">';
-         echo'<img src="//https:image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>';
+         echo'<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>';
          echo'</div>';
          echo'<div class="col-md-10">';
          echo'<p><a href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'.$row_com->getCommenter().'</strong>Comment on '.$row_com->getTime_com().'</a></p>';
