@@ -131,7 +131,7 @@
    ini_set('display_errors', 0);
    session_start();
    $user_tln = $_SESSION['username'];
-   $sql_tl = "SELECT * FROM timeline where username ='$user_tln'";
+   $sql_tl = "SELECT * FROM timeline";
    $result_tl = $conn -> query($sql_tl);
    $user_tl=array();
 
