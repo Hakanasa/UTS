@@ -130,11 +130,31 @@
    ini_set('error_reporting', 0);
    ini_set('display_errors', 0);
    session_start();
+
    $user_tln = $_SESSION['username'];
    $sql_tl = "SELECT * FROM timeline";
    $result_tl = $conn -> query($sql_tl);
    $user_tl=array();
 
+
+   $user_com = $_SESSION['username'];
+   $sql_com = "SELECT * FROM comment";
+   $result_com = $conn -> query($sql_com);
+   $user_com=array();
+
+   foreach($result_com as $row_com)
+   array_push(
+       $user_com, 
+           new Comment(
+               $row_com['post_id'],
+               $row_com['commenter'],
+               $row_com['description'],
+               $row_com['time']
+       
+           )
+   );
+   
+   
    foreach($result_tl as $row_tl)
    array_push(
        $user_tl, 
@@ -147,27 +167,41 @@
            )
    );
    foreach($user_tl as $row_tl){
-    echo "<tr>";
-    echo "<td>".$row_tl->getDeskripsitl()."</td>";
-    echo "<td>"; 
-    echo "<div class='col-sm-3'>";                
-    echo "<form method='post' action='index.php'>";      
-   // echo "<div class='form-group'>";
-  //  echo "<input type ='text' class='form-control' name='komentar' placeholder='komentar'";    
-   // echo "</div>";
-  //  echo "<input type='hidden' name='do' value='komentar.php'>";
-    echo "<input type='hidden' name='Post_id' value='".$row_tl->getPostid()."'>";       
+      echo "<tr>";
+      echo "<td>".$row_tl->getDeskripsitl()."</td>";
+      echo "</tr><tr><td>"; 
+      echo "<div>";                
+      echo "<form method='post' action='index.php'>";    
      
-    echo "<input type='hidden' name='loc' value='komentar.php'>";
-    echo "<button type='submit' name='submit'>
-        Comment 
-        </button>";                
-    echo "</form>";                
-    echo "</div>";
-    echo "</tr>";
-     
+      
+
+      echo "<div class='form-group'>"; 
+      foreach($user_com as $row_com){
+        if($row_tl->getPostid() == $row_com->getPostid_com()){
+        echo "User <b>".$row_com->getCommenter()."</b> Comment on ".$row_com->getTime_com()."<br>";   
+        echo $row_com->getDeskripsi_com()."<br>";
+        }  
+        
+
+       }
+      echo "</div>";
+
+
+
+      echo "<div class='form-group'>";
+      echo "<input type ='text' class='form-control' name='komentar' placeholder='Komentar' required";    
+      echo "</div>";
+      echo "<input type='hidden' name='do' value='komentar.php'>";
+      echo "<input type='hidden' name='Post_id' value='".$row_tl->getPostid()."'>";       
+       
+      //echo "<input type='hidden' name='loc' value='komentar.php'>";
+      echo "<button type='submit' name='submit'>
+          Comment 
+          </button>";                
+      echo "</form>";                
+      echo "</div></td>";
+      echo "</tr>";
    }
- 
  ?>
 </table>
 </form>
