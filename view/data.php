@@ -10,7 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  
+
   <style>
   .back-to-top {
     cursor: pointer;
@@ -144,63 +144,77 @@
 
    foreach($result_com as $row_com)
    array_push(
-       $user_com, 
+       $user_com,
            new Comment(
                $row_com['post_id'],
                $row_com['commenter'],
                $row_com['description'],
                $row_com['time']
-       
+
            )
    );
-   
-   
+
+
    foreach($result_tl as $row_tl)
    array_push(
-       $user_tl, 
+       $user_tl,
            new Timeline(
                $row_tl['username'],
                $row_tl['post_id'],
                $row_tl['description'],
                $row_tl['time']
-       
+
            )
    );
    foreach($user_tl as $row_tl){
-      echo "<tr>";
-      echo "<td>".$row_tl->getDeskripsitl()."</td>";
-      echo "</tr><tr><td>"; 
-      echo "<div>";                
-      echo "<form method='post' action='index.php'>";    
-     
-      
+     echo'<div class="card">';
+     echo'<div class="card-body">';
+     echo'<div class="row">';
+     echo'<div class="col-md-2">';
+     echo'<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>';
+     echo'</div>';
+     echo'<div class="col-md-10">';
+     echo"<p>";
+     echo'<a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'. $row_tl->getUsernametl() .'</strong></a>';
+     echo'<div class="clearfix"></div>';
+     echo"<p>". $row_tl->getDeskripsitl(). "<p>";
+     echo"</div>";
+     echo"</div>";
 
-      echo "<div class='form-group'>"; 
-      foreach($user_com as $row_com){
-        if($row_tl->getPostid() == $row_com->getPostid_com()){
-        echo "User <b>".$row_com->getCommenter()."</b> Comment on ".$row_com->getTime_com()."<br>";   
-        echo $row_com->getDeskripsi_com()."<br>";
-        }  
-        
+     foreach($user_com as $row_com){
+       if($row_tl->getPostid() == $row_com->getPostid_com()){
+         echo'<div class="card card-inner">';
+         echo'<div class="card-body">';
+         echo'<div class="row">';
+         echo'<div class="col-md-2">';
+         echo'<img src="//https:image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>';
+         echo'</div>';
+         echo'<div class="col-md-10">';
+         echo'<p><a href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'.$row_com->getCommenter().'</strong>Comment on '.$row_com->getTime_com().'</a></p>';
 
+         echo'<p>'. $row_com->getDeskripsi_com(). "</p>";
+         echo"</div>";
+         echo"</div>";
+         echo"</div>";
+         echo"</div>";
+       //echo "User <b>".$row_com->getCommenter()."</b> Comment on ".$row_com->getTime_com()."<br>";
+       //echo $row_com->getDeskripsi_com()."<br>";
        }
-      echo "</div>";
-
-
-
+      }
+      echo"</div>";
+      echo"</div>";
+      echo '<form method="post" action="index/php">';
       echo "<div class='form-group'>";
-      echo "<input type ='text' class='form-control' name='komentar' placeholder='Komentar' required";    
+      echo "<input type ='text' class='form-control' name='komentar' placeholder='Komentar' required";
       echo "</div>";
       echo "<input type='hidden' name='do' value='komentar.php'>";
-      echo "<input type='hidden' name='Post_id' value='".$row_tl->getPostid()."'>";       
-       
+      echo "<input type='hidden' name='Post_id' value='".$row_tl->getPostid()."'>";
+
       //echo "<input type='hidden' name='loc' value='komentar.php'>";
       echo "<button type='submit' name='submit'>
-          Comment 
-          </button>";                
-      echo "</form>";                
-      echo "</div></td>";
-      echo "</tr>";
+          Comment
+          </button>";
+      echo "</form>";
    }
  ?>
 </table>
