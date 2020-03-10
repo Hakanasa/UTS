@@ -23,6 +23,33 @@
   border-radius: 50%;
   background: white;
 }
+.people-nearby .google-maps{
+  background: #f8f8f8;
+  border-radius: 4px;
+  border: 1px solid #f1f2f2;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.people-nearby .google-maps .map{
+  height: 100px;
+  width: 100%;
+  border: none;
+}
+
+.people-nearby .nearby-user{
+  padding: 10px 0;
+  border-top: 1px solid #f1f2f2;
+  border-bottom: 1px solid #f1f2f2;
+  border-left: 1px solid #f1f2f2;
+  margin-bottom: 10px;
+}
+
+img.profile-photo-lg{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
   </style>
   <script>
   $(document).ready(function(){
@@ -180,7 +207,7 @@
            )
    );
    foreach($user_tl as $row_tl){
-     $sql_post = "SELECT * FROM timeline as t join user as u on (u.username = t.username) 
+     $sql_post = "SELECT * FROM timeline as t join user as u on (u.username = t.username)
                   where u.username = '" . $row_tl->getUsernametl() . "' group by t.username;";
      $hasil = $conn -> query($sql_post);
      echo'<div class="card">';
@@ -202,7 +229,7 @@
      echo"</div>";
 
      foreach($user_com as $row_com){
-      $sql_com = "SELECT * FROM comment,user 
+      $sql_com = "SELECT * FROM comment,user
                   where user.username = '" . $row_com->getCommenter() . "' group by comment.commenter;";
       $hasil_com = $conn -> query($sql_com);
        if($row_tl->getPostid() == $row_com->getPostid_com()){
@@ -247,6 +274,73 @@
 </table>
 </form>
         </div>
+      </div>
+      <div class="col-sm-4 sidenav" style="float : right;">
+        <?php
+            ini_set('error_reporting', 0);
+            ini_set('display_errors', 0);
+            session_start();
+
+            $users = $_SESSION['username'];
+            $sql_list = "SELECT * FROM user where username !='$users'";
+            $result_list = $conn -> query($sql_list);
+            $user_list=array();
+
+            foreach($result_list as $row_list)
+            array_push(
+                $user_list,
+                    new User(
+                        $row_list['nama_depan'],
+                        $row_list['nama_belakang'],
+                        $row_list['tanggal_lahir'],
+                        $row_list['jenis_kelamin'],
+                        $row_list['username'],
+                        $row_list['password'],
+                        $row_list['gambar'],
+                        $row_list['profile_deskripsi']
+                    )
+            );
+
+              echo '<div class="container" style="border : 1px solid #f1f2f2; background-color: #f5f7fa">';
+              echo '<div class="row">';
+              echo'<div class="col-md-12">';
+              echo "<h2><i>Users</i></h2>";
+              echo'<div class="people-nearby">';
+            foreach($user_list as $row_list){
+              echo '<form method="post" action="index.php">';
+              echo'<div class="nearby-user">';
+              echo'<div class="row">';
+              echo'<div class="col-md-2 col-sm-2">';
+              echo "<img class = 'profile-photo-lg' alt='user' src='gambar/".$row_list->getGambar()."'>";
+              echo'</div>';
+              echo'<div class="col-md-7 col-sm-7">';
+              echo'<h5><a href="#" class="profile-link text-dark">'.$row_list->getNama_depan().' '.$row_list->getNama_belakang().'</a></h5>';
+              echo'<p>'.$row_list->getDeskripsi().'</p>';
+              echo'</div>';
+              echo'<div class="col-md-3 col-sm-3">';
+              echo "<input type='hidden' name='user' value='".$row_list->getUsername()."'>";
+              echo "<input type='hidden' name='do' value='add_friends.php'>";
+              echo"<button name='submit' value='add_friends.php' class='btn btn-dark pull-right'>Add Friend</button>";
+              echo'</div>';
+              echo'</div>';
+              echo'</div>';
+              echo '</form>';
+                // echo '<form method="post" action="index.php">';
+                // echo "<img class = 'round' width = '100px' height ='100px' src='gambar/".$row->getGambar()."' ><br>";
+                // echo $row->getNama_depan()."<br>";
+                // echo $row->getNama_belakang()."<br>";
+                // echo $row->getDeskripsi()."<br>";
+                // echo "<input type='hidden' name='user' value='".$row->getUsername()."'>";
+                // echo "<input type='hidden' name='do' value='add_friends.php'>";
+                // echo "<button name='submit' value='add_friends.php' class='btn btn-dark'>Add to Friend</button><br><br>";
+                // echo "<input type='hidden' name='loc' value='data.php'>";
+                // echo '</form>';
+            }
+          echo'</div>';
+          echo'</div>';
+          echo'</div>';
+          echo'</div>';
+        ?>
       </div>
     </div>
   </div>

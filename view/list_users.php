@@ -101,7 +101,6 @@ img.profile-photo-lg{
           echo'<div class="col-md-7 col-sm-7">';
           echo'<h5><a href="#" class="profile-link text-dark">'.$row->getNama_depan().' '.$row->getNama_belakang().'</a></h5>';
           echo'<p>'.$row->getDeskripsi().'</p>';
-          echo'<p class="text-muted">500m away</p>';
           echo'</div>';
           echo'<div class="col-md-3 col-sm-3">';
           echo "<input type='hidden' name='user' value='".$row->getUsername()."'>";
