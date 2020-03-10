@@ -180,11 +180,18 @@
            )
    );
    foreach($user_tl as $row_tl){
+     $sql_post = "SELECT * FROM timeline as t join user as u on (u.username = t.username) 
+                  where u.username = '" . $row_tl->getUsernametl() . "' group by t.username;";
+     $hasil = $conn -> query($sql_post);
      echo'<div class="card">';
      echo'<div class="card-body">';
      echo'<div class="row">';
      echo'<div class="col-md-2">';
-     echo'<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>';
+     while($row1 = $hasil->fetch_assoc()) {
+      if($row_tl->getUsernametl() == $row1['username']){
+        echo"<img src='gambar/".$row1['gambar']."'  width = '100px' height ='100px' class='img img-rounded img-fluid'/>";
+      }
+     }
      echo'</div>';
      echo'<div class="col-md-10">';
      echo"<p>";
@@ -195,12 +202,19 @@
      echo"</div>";
 
      foreach($user_com as $row_com){
+      $sql_com = "SELECT * FROM comment,user 
+                  where user.username = '" . $row_com->getCommenter() . "' group by comment.commenter;";
+      $hasil_com = $conn -> query($sql_com);
        if($row_tl->getPostid() == $row_com->getPostid_com()){
          echo'<div class="card card-inner">';
          echo'<div class="card-body">';
          echo'<div class="row">';
          echo'<div class="col-md-2">';
-         echo'<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>';
+         while($row2 = $hasil_com->fetch_assoc()) {
+          if($row_tl->getUsernametl() == $row2['commenter'] && $row_tl->getPostid() == $row_com->getPostid_com()){
+            echo"<img src='gambar/".$row2['gambar']."'  width = '100px' height ='100px' class='img img-rounded img-fluid'/>";
+          }
+         }
          echo'</div>';
          echo'<div class="col-md-10">';
          echo'<p><a href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'.$row_com->getCommenter().'</strong>Comment on '.$row_com->getTime_com().'</a></p>';
