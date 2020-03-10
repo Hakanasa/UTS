@@ -1,11 +1,11 @@
 <?php
-class Friendz{
+class Friends{
     var $username;
     var $friend;
-    var $index;
+
 
     function __construct($indexs,$usernames,$friends){
-        $this->index=$indexs;
+
         $this->username=$usernames;
         $this->friend=$friends;
     }
