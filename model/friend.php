@@ -4,8 +4,7 @@ class Friends{
     var $friend;
 
 
-    function __construct($indexs,$usernames,$friends){
-
+    function __construct($usernames,$friends){
         $this->username=$usernames;
         $this->friend=$friends;
     }

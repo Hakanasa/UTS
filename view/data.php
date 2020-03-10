@@ -98,6 +98,8 @@
                     new User(
                         $row['nama_depan'],
                         $row['nama_belakang'],
+                        $row['tanggal_lahir'],
+                        $row['jenis_kelamin'],
                         $row['username'],
                         $row['password'],
                         $row['gambar'],

@@ -78,6 +78,8 @@ img.profile-photo-lg{
                 new User(
                     $row['nama_depan'],
                     $row['nama_belakang'],
+                    $row['tanggal_lahir'],
+                    $row['jenis_kelamin'],
                     $row['username'],
                     $row['password'],
                     $row['gambar'],
@@ -90,12 +92,11 @@ img.profile-photo-lg{
                 echo'<div class="col-md-8">';
                     echo'<div class="people-nearby">';
         foreach($user as $row){
-          echo 'MASIH BELUM SELESAI';
           echo '<form method="post" action="index.php">';
           echo'<div class="nearby-user">';
           echo'<div class="row">';
           echo'<div class="col-md-2 col-sm-2">';
-          echo'<img src="/gambar/'.$row->getGambar().'" alt="user" class="profile-photo-lg">';
+          echo "<img class = 'profile-photo-lg' alt='user' src='gambar/".$row->getGambar()."'>";
           echo'</div>';
           echo'<div class="col-md-7 col-sm-7">';
           echo'<h5><a href="#" class="profile-link text-dark">'.$row->getNama_depan().' '.$row->getNama_belakang().'</a></h5>';
@@ -103,7 +104,9 @@ img.profile-photo-lg{
           echo'<p class="text-muted">500m away</p>';
           echo'</div>';
           echo'<div class="col-md-3 col-sm-3">';
-          echo'<button class="btn btn-dark pull-right">Add Friend</button>';
+          echo "<input type='hidden' name='user' value='".$row->getUsername()."'>";
+          echo "<input type='hidden' name='do' value='add_friends.php'>";
+          echo"<button name='submit' value='add_friends.php' class='btn btn-dark pull-right'>Add Friend</button>";
           echo'</div>';
           echo'</div>';
           echo'</div>';

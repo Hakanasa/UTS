@@ -155,9 +155,9 @@
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Jenis Kelamin</label>
                                     <div class="col-lg-9">
-                                    <input type="radio" id="male" name="jenis_kelamin" value="Laki-laki" required>
+                                    <input type="radio" id="male" name="jenis_kelamin" value="Laki-laki">
                                     <label for="male">Male</label><br>
-                                    <input type="radio" id="female" name="jenis_kelamin" value="Perempuan" required>
+                                    <input type="radio" id="female" name="jenis_kelamin" value="Perempuan">
                                     <label for="female">Female</label><br>
                                     </div>
                                 </div>
