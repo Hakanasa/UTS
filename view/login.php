@@ -10,17 +10,29 @@
         <link rel="stylesheet" type="text/css" href="assets/examples.css" />
 
         <style>
-        #section0{
-          background-image: url(assets/BG-2.jpg);
-        }
         #section2{
-          background-image: url(assets/BG-1.jpg);
+          background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        	background-size: 400% 400%;
+        	animation: gradient 15s ease infinite;
         }
+
+        @keyframes gradient {
+        	0% {
+        		background-position: 0% 50%;
+        	}
+        	50% {
+        		background-position: 100% 50%;
+        	}
+        	100% {
+        		background-position: 0% 50%;
+        	}
+        }
+
         </style>
     </head>
     <body>
       <div id="fullpage">
-    <div class="section active" id="section0">
+    <!--<div class="section active" id="section0">
         <div class="slide active" id="slide0" active>
             <div class="intro">
                 <h1 class="text-white">WELCOME</h1>
@@ -29,7 +41,7 @@
         <div class="slide" id="slide1">
             <h1 class="text-white">Scroll Down for Sign In</h1>
         </div>
-    </div>
+    </div>-->
     <div class="section bg-white" id="section2">
       <div class="row">
         <aside class="col-sm-4">
