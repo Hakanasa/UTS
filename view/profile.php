@@ -62,6 +62,8 @@
                                         new User(
                                             $row['nama_depan'],
                                             $row['nama_belakang'],
+                                            $row['tanggal_lahir'],
+                                            $row['jenis_kelamin'],
                                             $row['username'],
                                             $row['password'],
                                             $row['gambar'],
@@ -83,6 +85,20 @@
                                     <?php
                                         foreach($user as $row){
                                           echo $row->getNama_belakang();
+                                        }
+                                        ?>
+                                    </p><h6>Tanggal Lahir</h6>
+                                    <p>
+                                    <?php
+                                        foreach($user as $row){
+                                          echo $row->getTanggalLahir();
+                                        }
+                                        ?>
+                                    </p><h6>Jenis Kelamin</h6>
+                                    <p>
+                                    <?php
+                                        foreach($user as $row){
+                                          echo $row->getJenisKelamin();
                                         }
                                         ?>
                                     </p>
@@ -125,6 +141,24 @@
                                         foreach($user as $row){
                                           echo $row->getNama_belakang();
                                         }; ?>'/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Tanggal Lahir</label>
+                                    <div class="col-lg-9">
+                                        <input id="n_belakang" type="date" class="form-control" name="tanggal_lahir"value='<?php
+                                        foreach($user as $row){
+                                          echo $row->getTanggalLahir();
+                                        }; ?>'/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Jenis Kelamin</label>
+                                    <div class="col-lg-9">
+                                    <input type="radio" id="male" name="jenis_kelamin" value="Laki-laki" required>
+                                    <label for="male">Male</label><br>
+                                    <input type="radio" id="female" name="jenis_kelamin" value="Perempuan" required>
+                                    <label for="female">Female</label><br>
                                     </div>
                                 </div>
                                 <div class="form-group row">

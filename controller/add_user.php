@@ -3,6 +3,8 @@
  if(isset($_POST['submit'])){
     $n_depan = mysqli_real_escape_string($conn,$_POST['n_depan']);
     $n_belakang = mysqli_real_escape_string($conn,$_POST['n_belakang']);
+    $tanggal_lahir = mysqli_real_escape_string($conn,$_POST['tanggal_lahir']);
+    $jenis_kelamin = mysqli_real_escape_string($conn,$_POST['jenis_kelamin']);
     $username = mysqli_real_escape_string($conn,$_POST['username']);
     $password = mysqli_real_escape_string($conn,$_POST['password']);
     $password = md5($password);
@@ -25,12 +27,12 @@
 
 
     if($ket==1&&$response_arr["success"]==true&&$check_sql==0){
-        $insert_sql = "INSERT INTO User (nama_depan, nama_belakang, username, password, gambar, profile_deskripsi) 
-            VALUES ('$n_depan','$n_belakang','$username','$password','$foto','$deskripsi')";
+        $insert_sql = "INSERT INTO User (nama_depan, nama_belakang, tanggal_lahir, jenis_kelamin, username, password, gambar, profile_deskripsi) 
+            VALUES ('$n_depan','$n_belakang', '$tanggal_lahir', '$jenis_kelamin','$username','$password','$foto','$deskripsi')";
 
         mysqli_query($conn,$insert_sql);
-    }else{
-        echo "Gagal brey";
+    }elseif($check_sql==1){
+        echo "Username sudah terpakai";
     }
 }
 

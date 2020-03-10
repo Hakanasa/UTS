@@ -33,22 +33,33 @@
 <form action ="index.php" method="post" enctype="multipart/form-data">
   <div class="form-group">
     <label>Nama Depan</label>
-    <input type="text" class="form-control" name="n_depan" placeholder="Nama Depan">
+    <input type="text" class="form-control" name="n_depan" placeholder="Nama Depan" required>
   </div>
   <div class="form-group">
     <label>Nama Belakang</label>
     <input type="text" class="form-control" name="n_belakang" placeholder="Nama Belakang">
   </div>
   <div class="form-group">
+    <label>Tanggal Lahir</label>
+    <input type="date" class="form-control" name="tanggal_lahir" required>
+  </div>
+  <div class="form-group">
+    <label>Jenis Kelamin</label><br>
+    <input type="radio" id="male" name="jenis_kelamin" value="Laki-laki" required>
+    <label for="male">Male</label><br>
+    <input type="radio" id="female" name="jenis_kelamin" value="Perempuan" required>
+    <label for="female">Female</label><br>
+  </div>
+  <div class="form-group">
     <label>Username</label>
-    <input type="text" class="form-control" name="username" placeholder="Username">
+    <input type="text" class="form-control" name="username" placeholder="Username" required>
   </div>
   <div class="form-group">
     <label>Password</label>
-    <input type="password" class="form-control" name="password" placeholder="Password" >
+    <input type="password" class="form-control" name="password" placeholder="Password" required>
   </div>
   <div class="form-group">
-    <label>Foto</label>
+    <label>Foto Profile</label>
     <input type="file" class="form-control" name="foto" placeholder="Foto" >
   </div>
   <div class="form-group">
