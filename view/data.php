@@ -125,9 +125,10 @@
         </p>
         <div class="collapse" id="collapseExample">
         <h2>Whats in your mind?</h2>
-          <form action = "index.php" method="post">
+          <form action = "index.php" method="post" enctype="multipart/form-data">
             <div class="py-3">
               <textarea class="form-control" rows="4" name="description" placeholder="Apa yang kamu pikirkan?" ></textarea>
+              <input type="file" class="form-control" name="foto_tl" placeholder="Foto">
           </div>
             <input type='hidden' name='do' value='add_comment.php'>
             <div class="d-flex justify-content-end">
@@ -175,7 +176,8 @@
                $row_tl['username'],
                $row_tl['post_id'],
                $row_tl['description'],
-               $row_tl['time']
+               $row_tl['time'],
+               $row_tl['gambar_tl']
 
            )
    );
@@ -197,6 +199,9 @@
      echo"<p>";
      echo'<a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'. $row_tl->getUsernametl() .'</strong></a>';
      echo'<div class="clearfix"></div>';
+     if($row_tl->getGambartl() != ''){
+      echo "<img class = 'round' width = '100px' height ='100px' src='gambar_tl/".$row_tl->getGambartl()."' >";
+    }
      echo"<p>". $row_tl->getDeskripsitl(). "<p>";
      echo"</div>";
      echo"</div>";
