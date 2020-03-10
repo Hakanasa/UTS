@@ -1,5 +1,5 @@
 <?php
-class Friends{
+class Friend{
     var $username;
     var $friend;
 
