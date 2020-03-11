@@ -68,7 +68,7 @@ img.profile-photo-lg{
         ini_set('display_errors', 0);
         session_start();
         $user_Sekarang = $_SESSION['username'];
-        $sql = "SELECT * FROM user where username !='$user_Sekarang'";
+        $sql = "SELECT * FROM user,friend where user.username !='$user_Sekarang' and friend.friend !=user.username group by user.username";
         $result = $conn -> query($sql);
         $user=array();
 

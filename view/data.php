@@ -281,71 +281,69 @@ img.profile-photo-lg{
         </div>
       </div>
       <div class="col-sm-4 sidenav" style="float : right;">
-        <?php
-            ini_set('error_reporting', 0);
-            ini_set('display_errors', 0);
-            session_start();
+      <?php
+        ini_set('error_reporting', 0);
+        ini_set('display_errors', 0);
+        session_start();
+        $user_Sekarang = $_SESSION['username'];
+        $sql = "SELECT * FROM user,friend where friend.username ='$user_Sekarang' and user.username = friend.friend group by friend.friend";
+        $result = $conn -> query($sql);
+        $user=array();
 
-            $users = $_SESSION['username'];
-            $sql_list = "SELECT * FROM user where username !='$users'";
-            $result_list = $conn -> query($sql_list);
-            $user_list=array();
+        echo'<h2>Friends</h2>';
 
-            foreach($result_list as $row_list)
-            array_push(
-                $user_list,
-                    new User(
-                        $row_list['nama_depan'],
-                        $row_list['nama_belakang'],
-                        $row_list['tanggal_lahir'],
-                        $row_list['jenis_kelamin'],
-                        $row_list['username'],
-                        $row_list['password'],
-                        $row_list['gambar'],
-                        $row_list['profile_deskripsi']
-                    )
-            );
+        foreach($result as $row)
+        array_push(
+            $user,
+                new User(
+                    $row['nama_depan'],
+                    $row['nama_belakang'],
+                    $row['tanggal_lahir'],
+                    $row['jenis_kelamin'],
+                    $row['username'],
+                    $row['password'],
+                    $row['gambar'],
+                    $row['profile_deskripsi']
+                )
+        );
 
-              echo '<div class="container" style="border : 1px solid #f1f2f2; background-color: #f5f7fa">';
-              echo '<div class="row">';
-              echo'<div class="col-md-12">';
-              echo "<h2><i>Users</i></h2>";
-              echo'<div class="people-nearby">';
-            foreach($user_list as $row_list){
-              echo '<form method="post" action="index.php">';
-              echo'<div class="nearby-user">';
-              echo'<div class="row">';
-              echo'<div class="col-md-2 col-sm-2">';
-              echo "<img class = 'profile-photo-lg' alt='user' src='gambar/".$row_list->getGambar()."'>";
-              echo'</div>';
-              echo'<div class="col-md-7 col-sm-7">';
-              echo'<h5><a href="#" class="profile-link text-dark">'.$row_list->getNama_depan().' '.$row_list->getNama_belakang().'</a></h5>';
-              echo'<p>'.$row_list->getDeskripsi().'</p>';
-              echo'</div>';
-              echo'<div class="col-md-3 col-sm-3">';
-              echo "<input type='hidden' name='user' value='".$row_list->getUsername()."'>";
-              echo "<input type='hidden' name='do' value='add_friends.php'>";
-              echo"<button name='submit' value='add_friends.php' class='btn btn-dark pull-right'>Add Friend</button>";
-              echo'</div>';
-              echo'</div>';
-              echo'</div>';
-              echo '</form>';
-                // echo '<form method="post" action="index.php">';
-                // echo "<img class = 'round' width = '100px' height ='100px' src='gambar/".$row->getGambar()."' ><br>";
-                // echo $row->getNama_depan()."<br>";
-                // echo $row->getNama_belakang()."<br>";
-                // echo $row->getDeskripsi()."<br>";
-                // echo "<input type='hidden' name='user' value='".$row->getUsername()."'>";
-                // echo "<input type='hidden' name='do' value='add_friends.php'>";
-                // echo "<button name='submit' value='add_friends.php' class='btn btn-dark'>Add to Friend</button><br><br>";
-                // echo "<input type='hidden' name='loc' value='data.php'>";
-                // echo '</form>';
-            }
+          echo '<div class="container">';
+          echo '<div class="row">';
+                echo'<div class="col-md-8">';
+                    echo'<div class="people-nearby">';
+        foreach($user as $row){
+          echo '<form method="post" action="index.php">';
+          echo'<div class="nearby-user">';
+          echo'<div class="row">';
+          echo'<div class="col-md-2 col-sm-2">';
+          echo "<img class = 'profile-photo-lg' alt='user' src='gambar/".$row->getGambar()."'>";
+          echo'</div>';
+          echo'<div class="col-md-7 col-sm-7">';
+          echo'<h5><a href="#" class="profile-link text-dark">'.$row->getNama_depan().' '.$row->getNama_belakang().'</a></h5>';
+          echo'<p>'.$row->getDeskripsi().'</p>';
+          echo'</div>';
+          echo'<div class="col-md-3 col-sm-3">';
+          echo "<input type='hidden' name='user' value='".$row->getUsername()."'>";
           echo'</div>';
           echo'</div>';
           echo'</div>';
-          echo'</div>';
-        ?>
+          echo '</form>';
+            // echo '<form method="post" action="index.php">';
+            // echo "<img class = 'round' width = '100px' height ='100px' src='gambar/".$row->getGambar()."' ><br>";
+            // echo $row->getNama_depan()."<br>";
+            // echo $row->getNama_belakang()."<br>";
+            // echo $row->getDeskripsi()."<br>";
+            // echo "<input type='hidden' name='user' value='".$row->getUsername()."'>";
+            // echo "<input type='hidden' name='do' value='add_friends.php'>";
+            // echo "<button name='submit' value='add_friends.php' class='btn btn-dark'>Add to Friend</button><br><br>";
+            // echo "<input type='hidden' name='loc' value='data.php'>";
+            // echo '</form>';
+        }
+      echo'</div>';
+      echo'</div>';
+      echo'</div>';
+      echo'</div>';
+    ?>
       </div>
     </div>
   </div>
