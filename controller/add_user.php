@@ -27,12 +27,12 @@
 
 
     if($ket==1&&$response_arr["success"]==true&&$check_sql==0){
-        $insert_sql = "INSERT INTO User (nama_depan, nama_belakang, tanggal_lahir, jenis_kelamin, username, password, gambar, profile_deskripsi) 
+        $insert_sql = "INSERT INTO User (nama_depan, nama_belakang, tanggal_lahir, jenis_kelamin, username, password, gambar, profile_deskripsi)
             VALUES ('$n_depan','$n_belakang', '$tanggal_lahir', '$jenis_kelamin','$username','$password','$foto','$deskripsi')";
 
         mysqli_query($conn,$insert_sql);
     }elseif($check_sql==1){
-        echo "Username sudah terpakai";
+        echo "<script>alert("Username sudah terpakai")</script>";
     }
 }
 

@@ -40,6 +40,9 @@
                             <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
                         </li>
                         <li class="nav-item">
+                            <a href="" data-target="#post" data-toggle="tab" class="nav-link">Post</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
                         </li>
                     </ul>
@@ -110,6 +113,64 @@
                                         }
                                         ?>
                                     </p>
+                                </div>
+                            </div>
+                            <!--/row-->
+                        </div>
+                        <div class="tab-pane" id="post">
+                            <h5 class="mb-3">User Post</h5>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                <?php
+                                session_start();
+                                ini_set('error_reporting', 0);
+                                ini_set('display_errors', 0);
+                                session_start();
+
+                                $user_tln = $_SESSION['username'];
+                                $sql_tl = "SELECT * FROM timeline where username ='$user_Sekarang'";
+                                $result_tl = $conn -> query($sql_tl);
+                                $user_tl=array();
+
+                                foreach($result_tl as $row_tl)
+                                array_push(
+                                    $user_tl,
+                                        new Timeline(
+                                            $row_tl['username'],
+                                            $row_tl['post_id'],
+                                            $row_tl['description'],
+                                            $row_tl['time'],
+                                            $row_tl['gambar_tl']
+
+                                        )
+                                );
+                                foreach($user_tl as $row_tl){
+                                  $sql_post = "SELECT * FROM timeline as t join user as u on (u.username = t.username)
+                                               where u.username = '" . $row_tl->getUsernametl() . "' group by t.username;";
+                                  $hasil = $conn -> query($sql_post);
+                                  echo'<div class="container">';
+                                  echo'<div class="row">';
+                                  echo'<div class="col-md-2">';
+                                  while($row1 = $hasil->fetch_assoc()) {
+                                   if($row_tl->getUsernametl() == $row1['username']){
+                                     echo"<img src='gambar/".$row1['gambar']."'  width = '100px' height ='100px' class='img img-rounded img-fluid'/>";
+                                   }
+                                  }
+                                  echo'</div>';
+                                  echo'<div class="col-md-10">';
+                                  echo"<p>";
+                                  echo'<a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'. $row_tl->getUsernametl() .'</strong></a>';
+                                  echo'<div class="clearfix"></div>';
+                                  if($row_tl->getGambartl() != ''){
+                                   echo "<img class = 'round' width = '100px' height ='100px' src='gambar_tl/".$row_tl->getGambartl()."' >";
+                                 }
+                                  echo"<p>". $row_tl->getDeskripsitl(). "<p>";
+                                  echo"</div>";
+                                  echo"</div>";
+                                  echo"</div>";
+                                }
+                            ?>
                                 </div>
                             </div>
                             <!--/row-->

@@ -18,7 +18,7 @@
         gambar="'.$foto.'", profile_deskripsi="'.$deskripsi.'" WHERE username like "'.$username.'";';
         mysqli_query($conn,$update_sql);
     }else{
-        echo "Gagal";
-    }   
+        echo "<script>alert("Update Gagal")</script>";
+    }
 }
 ?>
