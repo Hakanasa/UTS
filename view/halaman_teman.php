@@ -49,6 +49,7 @@
                                 <?php
                             
                                 $friend_user = $_POST['friend_user'];
+                                print_r($friend_user);
                                 $sql = "SELECT * FROM user where username ='$friend_user'";
                                 $result = $conn -> query($sql);
                                 $user=array();
@@ -107,6 +108,12 @@
                                         }
                                         ?>
                                     </p>
+                                    <p>
+                                    <form action = "index.php" method="post">
+                                    <input type='hidden' name='loc' value='data.php'>
+                                    <button type="submit" class="btn btn-secondary" value="data.php">Back</button>
+                                    </form>
+                                    </p>
                                 </div>
                             </div>
                             <!--/row-->
@@ -124,5 +131,6 @@
                 </div>
             </div>
         </div>
+
 </body>
 </html>

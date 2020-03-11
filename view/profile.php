@@ -113,6 +113,12 @@
                                         }
                                         ?>
                                     </p>
+                                    <p>
+                                    <form action = "index.php" method="post">
+                                    <input type='hidden' name='loc' value='data.php'>
+                                    <button type="submit" class="btn btn-secondary" value="data.php">Back</button>
+                                    </form>
+                                    </p>
                                 </div>
                             </div>
                             <!--/row-->

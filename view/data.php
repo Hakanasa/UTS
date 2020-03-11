@@ -98,11 +98,6 @@ img.profile-photo-lg{
                 <button type='submit' name='loc' value='list_users.php' class='btn btn-secondary' style="float: right">Add Friend</button>
     		    </div>
     	  </form>
-        <form action="index.php" method="post" class="px-2">
-    		    <div>
-                <button type='submit' name='loc' value='friend_list.php' class='btn btn-secondary' style="float: right">Friends</button>
-    		    </div>
-    	  </form>
       </ul>
     </div>
   </nav>
@@ -286,7 +281,7 @@ img.profile-photo-lg{
         ini_set('display_errors', 0);
         session_start();
         $user_Sekarang = $_SESSION['username'];
-        $sql = "SELECT * FROM user,friend where friend.username ='$user_Sekarang' and user.username = friend.friend group by friend.friend";
+        $sql = "SELECT user.nama_depan, user.nama_belakang, user.username, user.password, user.gambar, user.profile_deskripsi, user.tanggal_lahir, user.jenis_kelamin FROM user,friend where friend.username ='$user_Sekarang' and user.username = friend.friend group by friend.friend";
         $result = $conn -> query($sql);
         $user=array();
 
@@ -323,7 +318,9 @@ img.profile-photo-lg{
           echo'<p>'.$row->getDeskripsi().'</p>';
           echo'</div>';
           echo'<div class="col-md-3 col-sm-3">';
-          echo "<input type='hidden' name='user' value='".$row->getUsername()."'>";
+          echo "<input type='hidden' name='friend_user' value='".$row->getUsername()."'>";
+          echo "<input type='hidden' name='loc' value='halaman_teman.php'>";
+          echo "<button type='submit' name='submit'>Profile</button>";
           echo'</div>';
           echo'</div>';
           echo'</div>';

@@ -121,6 +121,10 @@ img.profile-photo-lg{
             // echo "<input type='hidden' name='loc' value='data.php'>";
             // echo '</form>';
         }
+        echo'<form action = "index.php" method="post">';
+        echo'<input type="hidden" name="loc" value="data.php">';                     
+        echo'<button type="submit" class="btn btn-secondary" value="data.php">Back</button>';                     
+        echo'</form>';                     
       echo'</div>';
       echo'</div>';
       echo'</div>';
