@@ -14,6 +14,7 @@ $result = mysqli_query($conn, $query);
 $cek = mysqli_num_rows($result);
 
 
+ 
 if($cek > 0 && $securimage->check($_POST['captcha_code']) == true){
 	session_start();
 	$_SESSION['username'] = $username;
@@ -23,16 +24,19 @@ if($cek > 0 && $securimage->check($_POST['captcha_code']) == true){
     location = "index.php";
     </script>'; 
 	
-}
-if($cek==0 || $securimage->check($_POST['captcha_code']) != true){
+}else if($cek==0){
     echo '<script>
+    alert("Salah Password / Username");
     location = "index.php";
     </script>'; 
-
-    $username = '';
-    $password = '';
+}else{
+    echo '<script>
+    alert("Salah Recaptcha");
+    location = "index.php";
+    </script>';
 }
 }
+ 
  
 ?>
 
