@@ -9,31 +9,36 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-    <a class="navbar-brand" name="do" value="data.php"href="index.php">Navbar</a>
+<body class="bg-secondary">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse d-flex flex-row-reverse" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <form action="index.php" method="post" class="px-2">
-            <div>
-                <input type='hidden' name='do' value='logout.php'>
-                <button type='submit' name='loc' value='login.php' class='btn btn-secondary' style="float: right">Logout</button>
-            </div>
+    		    <div>
+                <button type='submit' name='loc' value='list_users.php' class='btn btn-secondary' style="float: right">Add Friend</button>
+    		    </div>
+    	</form>
+        <form action="index.php" method="post" class="px-2">
+    		    <div>
+                <button type='submit' name='loc' value='friend_list.php' class='btn btn-secondary' style="float: right">Friends</button>
+    		    </div>
         </form>
         <form action="index.php" method="post" class="px-2">
-            <div>
-                <button type='submit' name='loc' value='profile.php' class='btn btn-secondary' style="float: right">Profile</button>
-            </div>
-        </form>
+    		    <div>
+                <input type='hidden' name='do' value='logout.php'>
+                <button type='submit' name='loc' value='login.php' class='btn btn-secondary' style="float: right">Logout</button>
+    		    </div>
+    	</form>
       </ul>
     </div>
   </nav>
 
-<div class="container pt-3 pb-2">
-            <div class="row my-2">
+<div class="container pt-5 pr-5 pb-5 bg-light mt-3 mb-3">
+            <div class="row content">
                 <div class="col-lg-8 order-lg-2">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
@@ -46,12 +51,12 @@
                             <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
                         </li>
                     </ul>
-                    <div class="tab-content py-4">
+                    <div class="tab-content py-4 px-4 bg-light">
                         <div class="tab-pane active" id="profile">
                             <h5 class="mb-3">User Profile</h5>
                             <hr>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                 <?php
                                 session_start();
                                 $user_Sekarang = $_SESSION['username'];
@@ -74,42 +79,36 @@
                                         )
                                         );
                             ?>
-
-                                    <h6>Nama Depan</h6>
-                                    <p>
                                         <?php
                                         foreach($user as $row){
-                                          echo $row->getNama_depan();
+                                          echo '<h6><strong>Nama Depan : </strong>'.$row->getNama_depan().'</h6>';
+                                        }
+                                        ?>
+                                    <p>
+                                    <?php
+                                        foreach($user as $row){
+                                          echo '<h6><strong>Nama Belakang : </strong>'.$row->getNama_belakang().'</h6>';
                                         }
                                         ?>
                                     </p>
-                                    <h6>Nama Belakang</h6>
                                     <p>
                                     <?php
                                         foreach($user as $row){
-                                          echo $row->getNama_belakang();
-                                        }
-                                        ?>
-                                    </p><h6>Tanggal Lahir</h6>
-                                    <p>
-                                    <?php
-                                        foreach($user as $row){
-                                          echo $row->getTanggalLahir();
-                                        }
-                                        ?>
-                                    </p><h6>Jenis Kelamin</h6>
-                                    <p>
-                                    <?php
-                                        foreach($user as $row){
-                                          echo $row->getJenisKelamin();
+                                          echo '<h6><strong>Tanggal Lahir : </strong>'.$row->getTanggalLahir().'</h6>';
                                         }
                                         ?>
                                     </p>
-                                    <h6>Deskripsi</h6>
                                     <p>
                                     <?php
                                         foreach($user as $row){
-                                          echo $row->getDeskripsi();
+                                          echo '<h6><strong>Jenis Kelamin : </strong>'.$row->getJenisKelamin().'</h6>';
+                                        }
+                                        ?>
+                                    </p>
+                                    <p>
+                                    <?php
+                                        foreach($user as $row){
+                                          echo '<h6><strong>Deskripsi : </strong>'.$row->getDeskripsi().'</h6>';
                                         }
                                         ?>
                                     </p>
@@ -184,7 +183,7 @@
                         <div class="tab-pane" id="edit">
                             <form [formGroup]="updateForm" method="post" role="form" action='index.php' enctype="multipart/form-data">
                             <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Username</label>
+                                    <h5 class="col-lg-3 col-form-label form-control-label">Username</h5>
                                     <div class="col-lg-9">
                                         <input id="username" type="text" class="form-control" name="username" disabled value='<?php
                                         foreach($user as $row){
@@ -193,7 +192,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Nama Depan</label>
+                                    <h5 class="col-lg-3 col-form-label form-control-label">Nama Depan</h5>
                                     <div class="col-lg-9">
                                         <input id="n_depan" type="text" class="form-control" name="n_depan" value='<?php
                                         foreach($user as $row){
@@ -202,7 +201,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Nama Belakang</label>
+                                    <h5 class="col-lg-3 col-form-label form-control-label">Nama Belakang</h5>
                                     <div class="col-lg-9">
                                         <input id="n_belakang" type="text" class="form-control" name="n_belakang"value='<?php
                                         foreach($user as $row){
@@ -211,7 +210,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Tanggal Lahir</label>
+                                    <h5 class="col-lg-3 col-form-label form-control-label">Tanggal Lahir</h5>
                                     <div class="col-lg-9">
                                         <input id="n_belakang" type="date" class="form-control" name="tanggal_lahir"value='<?php
                                         foreach($user as $row){
@@ -220,7 +219,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Jenis Kelamin</label>
+                                    <h5 class="col-lg-3 col-form-label form-control-label">Jenis Kelamin</h5>
                                     <div class="col-lg-9">
                                     <input type="radio" id="male" name="jenis_kelamin" value="Laki-laki">
                                     <label for="male">Male</label><br>
@@ -229,13 +228,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                                    <h5 class="col-lg-3 col-form-label form-control-label">Password</h5>
                                     <div class="col-lg-9">
                                         <input id="password" type="password" class="form-control" name="password">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Deskripsi</label>
+                                    <h5 class="col-lg-3 col-form-label form-control-label">Deskripsi</h5>
                                     <div class="col-lg-9">
                                         <input id="deskripsi" type="text" class="form-control" name="deskripsi" value ='<?php
                                         foreach($user as $row){
@@ -244,15 +243,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Foto</label>
+                                    <h5 class="col-lg-3 col-form-label form-control-label">Foto</h5>
                                     <div class="col-lg-9">
                                     <input type="file" name="foto">
                                     <br>
                                     <br>
+                                    <div class="d-flex justify-content-end">
                                     <input type='hidden' name='do' value='update_user.php'>
-                                        <button type="submit" name="submit" value="data.php" class="btn btn-primary">Update</button>
+                                        <button type="submit" name="submit" value="data.php" class="btn btn-dark mr-3">Update</button>
                                     <input type='hidden' name='loc' value='data.php'>
                                         <button type="submit" class="btn btn-secondary" value="data.php">Cancel</button>
+                                    </div>
                                     </div>
                                 </div>
                             </form>

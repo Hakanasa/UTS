@@ -9,9 +9,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <style>
-    body{
-    background:#FAFAFA;
-}
 .people-nearby .google-maps{
   background: #f8f8f8;
   border-radius: 4px;
@@ -41,28 +38,33 @@ img.profile-photo-lg{
 
     </style>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-      <a class="navbar-brand" name="do" value="data.php"href="index.php">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse d-flex flex-row-reverse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
-          <form action="index.php" method="post" class="px-2">
-              <div>
-                  <input type='hidden' name='do' value='logout.php'>
-                  <button type='submit' name='loc' value='login.php' class='btn btn-secondary' style="float: right">Logout</button>
-              </div>
-          </form>
-          <form action="index.php" method="post" class="px-2">
-              <div>
-                  <button type='submit' name='loc' value='profile.php' class='btn btn-secondary' style="float: right">Profile</button>
-              </div>
-          </form>
-        </ul>
-      </div>
-    </nav>
+  <body class="bg-secondary">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex flex-row-reverse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <form action="index.php" method="post" class="px-2">
+    		    <div>
+                <button type='submit' name='loc' value='profile.php' class='btn btn-secondary' style="float: right">Profile</button>
+    		    </div>
+    	  </form>
+        <form action="index.php" method="post" class="px-2">
+    		    <div>
+                <button type='submit' name='loc' value='friend_list.php' class='btn btn-secondary' style="float: right">Friends</button>
+    		    </div>
+    	  </form>
+        <form action="index.php" method="post" class="px-2">
+    		    <div>
+                <input type='hidden' name='do' value='logout.php'>
+                <button type='submit' name='loc' value='login.php' class='btn btn-secondary' style="float: right">Logout</button>
+    		    </div>
+    	  </form>
+      </ul>
+    </div>
+  </nav>
     <?php
         ini_set('error_reporting', 0);
         ini_set('display_errors', 0);
@@ -87,22 +89,22 @@ img.profile-photo-lg{
                 )
         );
 
-          echo '<div class="container">';
-          echo '<div class="row">';
-                echo'<div class="col-md-8">';
-                    echo'<div class="people-nearby">';
+          echo '<div class="container px-4 pr-5 bg-light mt-3 mb-3">';
+          echo '<div class="row content">';
+                echo'<div class="col-lg-12 order-lg-3">';
+                    echo'<div class="py-3"><h1>User Lists</h1>';
         foreach($user as $row){
           echo '<form method="post" action="index.php">';
-          echo'<div class="nearby-user">';
-          echo'<div class="row">';
-          echo'<div class="col-md-2 col-sm-2">';
+          echo'<div class="my-3">';
+          echo'<div class="row border">';
+          echo'<div class="col-md-2 col-sm-2 my-3">';
           echo "<img class = 'profile-photo-lg' alt='user' src='gambar/".$row->getGambar()."'>";
           echo'</div>';
-          echo'<div class="col-md-7 col-sm-7">';
-          echo'<h5><a href="#" class="profile-link text-dark">'.$row->getNama_depan().' '.$row->getNama_belakang().'</a></h5>';
+          echo'<div class="col-md-7 col-sm-7 mt-3">';
+          echo'<h5><a href="#" class="profile-link text-dark text-capitalize">'.$row->getNama_depan().' '.$row->getNama_belakang().'</a></h5>';
           echo'<p>'.$row->getDeskripsi().'</p>';
           echo'</div>';
-          echo'<div class="col-md-3 col-sm-3">';
+          echo'<div class="col-md-3 col-sm-3 my-4">';
           echo "<input type='hidden' name='user' value='".$row->getUsername()."'>";
           echo "<input type='hidden' name='do' value='add_friends.php'>";
           echo"<button name='submit' value='add_friends.php' class='btn btn-dark pull-right'>Add Friend</button>";
@@ -121,10 +123,10 @@ img.profile-photo-lg{
             // echo "<input type='hidden' name='loc' value='data.php'>";
             // echo '</form>';
         }
-        echo'<form action = "index.php" method="post">';
-        echo'<input type="hidden" name="loc" value="data.php">';                     
-        echo'<button type="submit" class="btn btn-secondary" value="data.php">Back</button>';                     
-        echo'</form>';                     
+        echo '<form action = "index.php" method="post">';
+        echo "<input type='hidden' name='loc' value='data.php'>";
+        echo '<button type="submit" class="btn btn-secondary" value="data.php">Back</button>';
+        echo '</form>';
       echo'</div>';
       echo'</div>';
       echo'</div>';

@@ -35,68 +35,71 @@
   <body>
     <div id="fullpage">
       <div class="section bg-white" id="section2">
-        <h1><i>Registration</i></h1>
+        <h1 class="my-3">Registration</h1>
         <div class="row">
           <aside class="col-sm-2">
           </aside>
-        <article class="card-body col-sm-8" style="background-color: rgba(255, 255, 255, 0.5);">
+        <article class="card-body col-sm-8 text-left px-5 py-5" style="background-color: rgba(255, 255, 255, 0.5);">
           <form action ="index.php" method="post" enctype="multipart/form-data">
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Nama Depan</label>
+              <label class="col-lg-3 col-form-label form-control-label text-dark">Nama Depan</label>
               <div class="col-lg-9">
                   <input type="text" class="form-control" name="n_depan" placeholder="Nama Depan">
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Nama Belakang</label>
+              <label class="col-lg-3 col-form-label form-control-label text-dark">Nama Belakang</label>
               <div class="col-lg-9">
                 <input type="text" class="form-control" name="n_belakang" placeholder="Nama Belakang">
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Tanggal Lahir</label>
+              <label class="col-lg-3 col-form-label form-control-label text-dark">Tanggal Lahir</label>
               <div class="col-lg-9">
                 <input type="date" class="form-control" name="tanggal_lahir">
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Jenis Kelamin</label><br>
-              <div class="col-lg-9 d-flex align-content-start flex-wrap">
+              <label class="col-lg-3 col-form-label form-control-label text-dark">Jenis Kelamin</label><br>
+              <div class="col-lg-9 d-flex align-content-start flex-wrap text-dark">
                 <input type="radio" id="male" name="jenis_kelamin" value="Laki-laki">
-                <label for="male">Male</label>
+                <label for="male"> Male</label>
                 <input type="radio" id="female" name="jenis_kelamin" value="Perempuan">
-                <label for="female">Female</label>
+                <label for="female"> Female</label>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Username</label>
+              <label class="col-lg-3 col-form-label form-control-label text-dark">Username</label>
               <div class="col-lg-9">
                 <input type="text" class="form-control" name="username" placeholder="Username">
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Password</label>
+              <label class="col-lg-3 col-form-label form-control-label text-dark">Password</label>
               <div class="col-lg-9">
                 <input type="password" class="form-control" name="password" placeholder="Password">
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Foto Profile</label>
+              <label class="col-lg-3 col-form-label form-control-label text-dark">Foto Profile</label>
               <div class="col-lg-9">
                 <input type="file" class="form-control" name="foto" placeholder="Foto" >
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-lg-3 col-form-label form-control-label">Deskripsikan Dirimu</label>
+              <label class="col-lg-3 col-form-label form-control-label text-dark">Deskripsikan Dirimu</label>
               <div class="col-lg-9">
                 <input type="text" class="form-control" name="deskripsi" placeholder="Deskripsikan Dirimu" >
               </div>
             </div>
-
+            <div class="d-flex justify-content-end">
+            <div class="mr-3">
             <input type='hidden' name='do' value='add_user.php'>
             <button name='submit' value='login.php' class='btn btn-default'>Add User</button>
+            </div>
             <input type='hidden' name='loc' value='login.php'>
             <button name='loc' value='login.php' class='btn btn-default'>Cancel</button>
+            </div>
           </form>
         </article>
         <div class="col-sm-2"></div>
