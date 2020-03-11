@@ -17,19 +17,20 @@ $cek = mysqli_num_rows($result);
 if($cek > 0 && $securimage->check($_POST['captcha_code']) == true){
 	session_start();
 	$_SESSION['username'] = $username;
-	$_SESSION['status'] = "login";
-	
-}
-if($cek==0){
+    $_SESSION['status'] = "login";
     echo '<script>
-    alert("Salah Password / Username");
+    alert("Welcome");
     location = "index.php";
     </script>'; 
-}if($securimage->check($_POST['captcha_code']) == false && $cek>0){
+	
+}
+if($cek==0 || $securimage->check($_POST['captcha_code']) != true){
     echo '<script>
-    alert("Salah Recaptcha");
     location = "index.php";
-    </script>';
+    </script>'; 
+
+    $username = '';
+    $password = '';
 }
 }
  

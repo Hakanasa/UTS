@@ -88,8 +88,8 @@
 
 
                   <div class="form-group">
-                      <input type='hidden' name='do' value='check_loginuser.php'>
-                      <button type='submit' name='submit' value='data.php' class='btn btn-dark btn-block'>Login</button>
+                  <input type='hidden' name='do' value='check_loginuser.php'>
+                  <button type='submit' name='submit' value='data.php' class='btn btn-dark btn-block'>Login</button>
               <input type='hidden' name='loc' value='data.php'>
               <br>
               <button type='submit' name='loc' value='register_user.php' class='btn btn-dark btn-block'>Register</button>
