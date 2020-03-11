@@ -25,7 +25,7 @@ if($cek==0){
     alert("Salah Password / Username");
     location = "index.php";
     </script>'; 
-}if($securimage->check($_POST['captcha_code']) == false){
+}if($securimage->check($_POST['captcha_code']) == false && $cek>0){
     echo '<script>
     alert("Salah Recaptcha");
     location = "index.php";
