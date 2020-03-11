@@ -12,7 +12,6 @@
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.20/datatables.min.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js"></script>
 
     <title>Kegiatan5</title>
   </head>
@@ -66,10 +65,7 @@
     <label>Deskripsikan Dirimu</label>
     <input type="text" class="form-control" name="deskripsi" placeholder="Deskripsikan Dirimu" >
   </div>
-  <div class="form-group">
-    <label>Recaptcha</label>
-    <div class="g-recaptcha" data-sitekey="6LcPN98UAAAAAC1kE0zirTWp1hohOCOurWOCSzP4" style="margin-bottom: 10px;"></div>
-  </div>
+
   <input type='hidden' name='do' value='add_user.php'> 
   <button name='submit' value='login.php' class='btn btn-default'>Add User</button>  
   <input type='hidden' name='loc' value='login.php'> 

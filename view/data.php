@@ -116,7 +116,7 @@ img.profile-photo-lg{
             session_start();
             $user_Sekarang = $_SESSION['username'];
             $sql = "SELECT * FROM user where username ='$user_Sekarang'";
-            $result = $conn -> query($sql);
+            $result = $conn -> query($sql); 
             $user=array();
 
             foreach($result as $row)
