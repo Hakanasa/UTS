@@ -17,7 +17,7 @@
     include 'model/comment.php';
     include 'model/timeline.php';
     include 'model/friend.php';
-    include 'model/securimage.php';
+    include_once 'model/securimage.php';
     if(isset($_POST['do'])) include 'controller/' . $_POST['do'];
     include 'view/' . $loc;
     include 'include/db_disconnect.php';
