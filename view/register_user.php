@@ -71,13 +71,13 @@
             <div class="form-group row">
               <label class="col-lg-3 col-form-label form-control-label text-dark">Username</label>
               <div class="col-lg-9">
-                <input type="text" class="form-control" name="username" placeholder="Username">
+                <input type="text" class="form-control" name="username" placeholder="Username" required>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-lg-3 col-form-label form-control-label text-dark">Password</label>
               <div class="col-lg-9">
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
               </div>
             </div>
             <div class="form-group row">
