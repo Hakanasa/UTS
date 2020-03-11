@@ -5,7 +5,7 @@
     		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        
+
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
         <link rel="stylesheet" type="text/css" href="assets/fullpage.css" />
         <link rel="stylesheet" type="text/css" href="assets/examples.css" />
@@ -60,7 +60,7 @@
                 <input class="form-control" type="text" name="username" id="username" placeholder="Masukkan Username" autofocus>
             </div>
           </div>
-          
+
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-prepend">
@@ -80,7 +80,7 @@
               <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-key"></i> </span>
               </div>
-              
+
               <input type="text" class="form-control" name="captcha_code" size="10" maxlength="6" placeholder="Masukkan Kode di atas" />
             </div>
           </div>
@@ -114,4 +114,3 @@
 
 
 </html>
-

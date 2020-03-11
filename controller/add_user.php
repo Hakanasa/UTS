@@ -24,6 +24,9 @@
 
         echo '<script>alert("Berhasil Register");</script>';
     }
+    elseif ($check_sql>0) {
+      echo '<script>alert("Username Sudah Digunakan Silahkan Coba Lagi")';
+    }
 }
 
 ?>
