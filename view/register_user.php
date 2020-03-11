@@ -33,8 +33,8 @@
   </head>
 
   <body>
-    <div id="fullpage">
-      <div class="section bg-white" id="section2">
+    <div>
+      <div class="section" id="section2">
         <h1 class="my-3">Registration</h1>
         <div class="row">
           <aside class="col-sm-2">
