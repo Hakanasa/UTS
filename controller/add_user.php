@@ -25,7 +25,7 @@
 
         mysqli_query($conn,$insert_sql);
     }elseif($check_sql==1){
-        echo "<script>alert("Username sudah terpakai")</script>";
+        echo '<script>alert("Username sudah terpakai")</script>';
     }
 
 }
