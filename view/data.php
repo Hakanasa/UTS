@@ -246,7 +246,8 @@ img.profile-photo-lg{
      }
      echo'</div>';
      echo'<div class="col-md-10">';
-     echo'<a class="float-left text-uppercase text-dark mb-2" href="#"><strong>'. $row_tl->getUsernametl() .'</strong></a>';
+     echo'<a class="float-left text-uppercase text-dark mb-2" href="#"><strong>'. $row->getNama_depan() ." ".$row->getNama_belakang() .'</strong></a>'
+     . '<p class="text-lowercase text-secondary">-post on '.$row_tl->getTimetl().'</p>';
      echo'<div class="clearfix"></div>';
      if($row_tl->getGambartl() != ''){
       echo "<img class = 'round' width = '100px' height ='100px' src='gambar_tl/".$row_tl->getGambartl()."' >";
