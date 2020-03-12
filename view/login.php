@@ -12,7 +12,7 @@
 
         <style>
         #section2{
-          background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+          background: linear-gradient(124deg, #0f0f0f, #2b2424, #4d3c3c, #634343, #3f3245, #322338, #2b172a, #4f1627, #2b080c);
         	background-size: 400% 400%;
         	animation: gradient 15s ease infinite;
         }
@@ -28,82 +28,196 @@
         		background-position: 0% 50%;
         	}
         }
+        #particles-js{
+          	width: 100%;
+          	height: 100%;
+          	background-size: cover;
+          	background-position: 50% 50%;
+          	position: fixed;
+          	top: 0px;
+          	z-index:1;
+        }
+        #login-box {
+        	z-index: 9999;
+        }
 
         </style>
     </head>
-    <body>
-      <div id="fullpage">
-        <!--<div class="section active" id="section0">
-            <div class="slide active" id="slide0" active>
-                <div class="intro">
-                    <h1 class="text-white">WELCOME</h1>
-                </div>
-            </div>
-            <div class="slide" id="slide1">
-                <h1 class="text-white">Scroll Down for Sign In</h1>
-            </div>
-        </div>-->
-        <div class="section bg-white" id="section2">
-          <div class="row">
-            <aside class="col-sm-4">
-            </aside>
-          <article class="card-body">
-          <h1 class="card-title text-center mb-4 mt-1">Sign In</h1>
-            <form action="index.php" method="post" onSubmit="return validasi()">
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+    <body id="section2">
+          <div class="container text-center px-5 py-5 mt-sm-4">
+            <div class="row">
+              <aside class="col-sm-3">
+              </aside>
+            <article class="card-body col-sm-6" id="login-box" style="background-color: rgba(255, 255, 255, 0.5);">
+            <h1 class="card-title text-center mb-4 mt-1"><i>Sign In</i></h1>
+              <form action="index.php" method="post" onSubmit="return validasi()">
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                      <input class="form-control" type="text" name="username" id="username" placeholder="Masukkan Username" autofocus>
                   </div>
-                    <input class="form-control" type="text" name="username" id="username" placeholder="Masukkan Username" autofocus>
                 </div>
-              </div>
 
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend">
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-key"></i> </span>
+                    </div>
+
+                    <input class="form-control" type="password" name="password" id="password" placeholder="Masukkan Password">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                <img id="captcha" src="securimage/securimage_show.php" alt="CAPTCHA Image" />
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-key"></i> </span>
+                    </div>
+
+                    <input type="text" class="form-control" name="captcha_code" size="10" maxlength="6" placeholder="Masukkan Kode di atas" />
                   </div>
-
-                  <input class="form-control" type="password" name="password" id="password" placeholder="Masukkan Password">
                 </div>
-              </div>
-
-              <div class="form-group">
-              <img id="captcha" src="securimage/securimage_show.php" alt="CAPTCHA Image" />
-              </div>
-
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                  <span class="input-group-text"> <i class="fa fa-key"></i> </span>
-                  </div>
-
-                  <input type="text" class="form-control" name="captcha_code" size="10" maxlength="6" placeholder="Masukkan Kode di atas" />
+                <div class="form-group">
+                  <input type='hidden' name='do' value='check_loginuser.php'>
+                  <button type='submit' name='submit' value='data.php' class='btn btn-dark btn-block'>Login</button>
+                  <input type='hidden' name='loc' value='data.php'>
+                  <br>
+                  <button type='submit' name='loc' value='register_user.php' class='btn btn-dark btn-block'>Register</button>
                 </div>
-              </div>
-              <div class="form-group">
-                <input type='hidden' name='do' value='check_loginuser.php'>
-                <button type='submit' name='submit' value='data.php' class='btn btn-dark btn-block'>Login</button>
-                <input type='hidden' name='loc' value='data.php'>
-                <br>
-                <button type='submit' name='loc' value='register_user.php' class='btn btn-dark btn-block'>Register</button>
-              </div>
-            </form>
-          </article>
-          <div class="col-sm-4"></div>
+              </form>
+            </article>
+            <div class="col-sm-3"></div>
+            <div class="container">
+            </div>
           </div>
         </div>
-    </div>
-
-    <script type="text/javascript" src="assets/fullpage.js"></script>
-    <script type="text/javascript" src="assets/examples.js"></script>
+    <div id="particles-js"></div>
     <script type="text/javascript">
-        var myFullpage = new fullpage('#fullpage', {
-            anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
-            menu: '#menu',
-            lazyLoad: true
-        });
+        $.getScript("https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js", function(){
+          particlesJS('particles-js',
+            {
+              "particles": {
+                "number": {
+                  "value": 80,
+                  "density": {
+                    "enable": true,
+                    "value_area": 800
+                  }
+                },
+                "color": {
+                  "value": "#ffffff"
+                },
+                "shape": {
+                  "type": "circle",
+                  "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                  },
+                  "polygon": {
+                    "nb_sides": 5
+                  },
+                  "image": {
+                    "width": 100,
+                    "height": 100
+                  }
+                },
+                "opacity": {
+                  "value": 0.5,
+                  "random": false,
+                  "anim": {
+                    "enable": false,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                  }
+                },
+                "size": {
+                  "value": 5,
+                  "random": true,
+                  "anim": {
+                    "enable": false,
+                    "speed": 40,
+                    "size_min": 0.1,
+                    "sync": false
+                  }
+                },
+                "line_linked": {
+                  "enable": true,
+                  "distance": 150,
+                  "color": "#ffffff",
+                  "opacity": 0.4,
+                  "width": 1
+                },
+                "move": {
+                  "enable": true,
+                  "speed": 6,
+                  "direction": "none",
+                  "random": false,
+                  "straight": false,
+                  "out_mode": "out",
+                  "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                  }
+                }
+              },
+              "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                  "onhover": {
+                    "enable": true,
+                    "mode": "repulse"
+                  },
+                  "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                  },
+                  "resize": true
+                },
+                "modes": {
+                  "grab": {
+                    "distance": 400,
+                    "line_linked": {
+                      "opacity": 1
+                    }
+                  },
+                  "bubble": {
+                    "distance": 400,
+                    "size": 40,
+                    "duration": 2,
+                    "opacity": 8,
+                    "speed": 3
+                  },
+                  "repulse": {
+                    "distance": 200
+                  },
+                  "push": {
+                    "particles_nb": 4
+                  },
+                  "remove": {
+                    "particles_nb": 2
+                  }
+                }
+              },
+              "retina_detect": true,
+              "config_demo": {
+                "hide_card": false,
+                "background_color": "#b61924",
+                "background_image": "",
+                "background_position": "50% 50%",
+                "background_repeat": "no-repeat",
+                "background_size": "cover"
+              }
+            }
+          );
+      });
     </script>
 </body>
 
