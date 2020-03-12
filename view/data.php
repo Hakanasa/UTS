@@ -7,6 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link href="assets/hamburgers.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -148,7 +149,7 @@ img.profile-photo-lg{
                     )
             );
             foreach($user as $row){
-                echo "<img class = ' mt-3 mb-3 round' width = '150px' height ='150px' src='gambar/".$row->getGambar()."' >";
+                echo "<img class = 'round img-thumbnail' src='gambar/".$row->getGambar()."' >";
                 echo "<p class='text-center text-white font-weight-bold'>Hai! Apa kabar ".$row->getNama_depan(). "? </p>";
             }
 
@@ -241,19 +242,32 @@ img.profile-photo-lg{
      echo'<div class="col-md-2">';
      while($row1 = $hasil->fetch_assoc()) {
       if($row_tl->getUsernametl() == $row1['username']){
-        echo"<img src='gambar/".$row1['gambar']."'  width = '100px' height ='100px' class='img img-rounded img-fluid'/>";
+        echo"<img src='gambar/".$row1['gambar']."' class='img img-rounded img-fluid img-thumbnail'/>";
         echo'</div>';
-        echo'<div class="col-md-10">';
-        echo'<a class="float-left text-uppercase text-dark mb-2" href="#"><strong>'. $row1['nama_depan'] . " " . $row1['nama_belakang'] .'</strong></a>' . '<p class="text-lowercase text-secondary">-post on '.$row_tl->getTimetl().'</p>';
+        echo'<div class="col-md-8">';
+        echo'<p class="text-uppercase mb-0 py-0"><a class="text-dark" href="#"><strong>'. $row1['nama_depan'] . " " . $row1['nama_belakang'] .'</strong></a></p>' . '<p class="text-lowercase text-secondary">post on '.$row_tl->getTimetl().'</p>';
       }
      }
-     
+
      echo'<div class="clearfix"></div>';
      if($row_tl->getGambartl() != ''){
-      echo "<img class = 'round' width = '100px' height ='100px' src='gambar_tl/".$row_tl->getGambartl()."' >";
+      echo "<img class = 'img img-thumbnail' src='gambar_tl/".$row_tl->getGambartl()."' >";
     }
      echo"<p class='text-dark border-top pt-2'>". $row_tl->getDeskripsitl(). "<p>";
      echo"</div>";
+     //dropdown
+     echo'<div class="col-md-2 dropdown" style="z-index: 1000;">';
+     echo'<div class="hamburger hamburger--spin-r px-0 py-0" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+     echo'<div class="hamburger-box">';
+     echo'<div class="hamburger-inner"></div>';
+     echo'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
+     echo'<a class="dropdown-item" href="#">Edit</a>';
+     echo'<a class="dropdown-item" href="#">Delete</a>';
+     echo'</div>';
+     echo'</div>';
+     echo'</div>';
+     echo'</div>';
+     //end dropdown
      echo"</div>";
 
      foreach($user_com as $row_com){
@@ -267,7 +281,7 @@ img.profile-photo-lg{
          echo'<div class="col-md-2">';
          while($row2 = $hasil_com->fetch_assoc()) {
           if($row_tl->getUsernametl() == $row2['commenter'] && $row_tl->getPostid() == $row_com->getPostid_com()){
-            echo"<img src='gambar/".$row2['gambar']."'  width = '100px' height ='100px' class='img img-rounded img-fluid'/>";  
+            echo"<img src='gambar/".$row2['gambar']."' class='img img-rounded img-fluid'/>";
             echo'</div>';
             echo'<div class="col-md-10">';
             echo'<p class="text-uppercase mb-0 py-0"><a class="text-dark" href="#"><strong>'.$row2['nama_depan'].'</strong></a></p>' . '<p class="text-lowercase text-secondary">commented on '.$row_com->getTime_com().'</p>';
@@ -332,23 +346,21 @@ img.profile-photo-lg{
               echo '<div class="row">';
               echo'<div class="col-md-12">';
               echo'<h2 class="border-bottom py-3">Friends</h2>';
-              echo'<div class="people-nearby">';
+              echo'<div class="people-nearby py-1">';
               foreach($user as $row){
                 echo '<form method="post" action="index.php">';
-                echo'<div class="nearby-user">';
-                echo'<div class="row my-2 border mx-2">';
-                echo'<div class="col-md-2 col-sm-2 py-2">';
-                echo "<img class = 'profile-photo-lg' alt='user' src='gambar/".$row->getGambar()."'>";
+                echo'<div class="row border py-2 px-2 my-2 mx-2">';
+                echo'<div class="col-md-4 text-center">';
+                echo "<img class = 'rounded mx-auto d-block img-fluid' alt='user' src='gambar/".$row->getGambar()."'>";
                 echo'</div>';
-                echo'<div class="col-md-7 col-sm-7 py-1">';
-                echo'<h5><p class="profile-link text-dark">'.$row->getNama_depan().' '.$row->getNama_belakang().'</p></h5>';
+                echo'<div class="col-md-5 col-sm-5">';
+                echo'<h5><p>'.$row->getNama_depan().' '.$row->getNama_belakang().'</p></h5>';
                 echo'<p>'.$row->getDeskripsi().'</p>';
                 echo'</div>';
                 echo'<div class="col-md-3 col-sm-3">';
                 echo "<input type='hidden' name='friend_user' value='".$row->getUsername()."'>";
                 echo "<input type='hidden' name='loc' value='halaman_teman.php'>";
                 echo "<button type='submit' name='submit' class='btn btn-dark mt-4'>Profile</button>";
-                echo'</div>';
                 echo'</div>';
                 echo'</div>';
                 echo '</form>';
@@ -373,6 +385,18 @@ img.profile-photo-lg{
   </div>
 <a id="back-to-top" href="#" class="btn btn-dark btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><strong>^</strong></a>
 </div>
+  <script>
+    var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.call(t))for(var c in t)Object.prototype.hasOwnProperty.call(t,c)&&o.call(r,t[c],c,t);else for(var e=0,l=t.length;l>e;e++)o.call(r,t[e],e,t)};
+
+    var hamburgers = document.querySelectorAll(".hamburger");
+    if (hamburgers.length > 0) {
+      forEach(hamburgers, function(hamburger) {
+        hamburger.addEventListener("click", function() {
+          this.classList.toggle("is-active");
+        }, false);
+      });
+    }
+  </script>
 
 </body>
 </html>
