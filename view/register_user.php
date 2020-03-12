@@ -95,10 +95,12 @@
             <input type='hidden' name='do' value='add_user.php'>
             <button name='submit' value='login.php' class='btn btn-default'>Add User</button>
             </div>
+            </form>
+            <form action ="index.php" method="post">
             <input type='hidden' name='loc' value='login.php'>
             <button name='loc' value='login.php' class='btn btn-default'>Cancel</button>
+            </form>
             </div>
-          </form>
         </div>
 
     <script type="text/javascript" src="assets/fullpage.js"></script>

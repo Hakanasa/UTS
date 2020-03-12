@@ -242,12 +242,12 @@ img.profile-photo-lg{
      while($row1 = $hasil->fetch_assoc()) {
       if($row_tl->getUsernametl() == $row1['username']){
         echo"<img src='gambar/".$row1['gambar']."'  width = '100px' height ='100px' class='img img-rounded img-fluid'/>";
+        echo'</div>';
+        echo'<div class="col-md-10">';
+        echo'<a class="float-left text-uppercase text-dark mb-2" href="#"><strong>'. $row1['nama_depan'] . " " . $row1['nama_belakang'] .'</strong></a>' . '<p class="text-lowercase text-secondary">-post on '.$row_tl->getTimetl().'</p>';
       }
      }
-     echo'</div>';
-     echo'<div class="col-md-10">';
-     echo'<a class="float-left text-uppercase text-dark mb-2" href="#"><strong>'. $row->getNama_depan() ." ".$row->getNama_belakang() .'</strong></a>'
-     . '<p class="text-lowercase text-secondary">-post on '.$row_tl->getTimetl().'</p>';
+     
      echo'<div class="clearfix"></div>';
      if($row_tl->getGambartl() != ''){
       echo "<img class = 'round' width = '100px' height ='100px' src='gambar_tl/".$row_tl->getGambartl()."' >";
@@ -267,13 +267,15 @@ img.profile-photo-lg{
          echo'<div class="col-md-2">';
          while($row2 = $hasil_com->fetch_assoc()) {
           if($row_tl->getUsernametl() == $row2['commenter'] && $row_tl->getPostid() == $row_com->getPostid_com()){
-            echo"<img src='gambar/".$row2['gambar']."'  width = '100px' height ='100px' class='img img-rounded img-fluid'/>";
+            echo"<img src='gambar/".$row2['gambar']."'  width = '100px' height ='100px' class='img img-rounded img-fluid'/>";  
+            echo'</div>';
+            echo'<div class="col-md-10">';
+            echo'<p class="text-uppercase mb-0 py-0"><a class="text-dark" href="#"><strong>'.$row2['nama_depan'].'</strong></a></p>' . '<p class="text-lowercase text-secondary">commented on '.$row_com->getTime_com().'</p>';
+            echo'<p class="border-top pt-2">'. $row_com->getDeskripsi_com(). "</p>";
           }
          }
          echo'</div>';
          echo'<div class="col-md-10">';
-         echo'<p class="text-uppercase mb-0 py-0"><a class="text-dark" href="#"><strong>'.$row_com->getCommenter().'</strong></a></p>' . '<p class="text-lowercase text-secondary">commented on '.$row_com->getTime_com().'</p>';
-         echo'<p class="border-top pt-2">'. $row_com->getDeskripsi_com(). "</p>";
          echo"</div>";
          echo"</div>";
          echo"</div>";
@@ -284,7 +286,7 @@ img.profile-photo-lg{
       }
       echo"</div>";
       echo"</div>";
-      echo '<form method="post" action="index/php">';
+      echo '<form method="post" action="index.php">';
       echo "<div class='form-group py-2'>";
       echo "<input type ='text' class='form-control' name='komentar' placeholder='Komentar' required";
       echo "</div>";
