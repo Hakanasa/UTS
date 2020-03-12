@@ -50,6 +50,20 @@ img.profile-photo-lg{
   width: 80px;
   border-radius: 50%;
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
   </style>
   <script>
   $(document).ready(function(){
@@ -74,9 +88,9 @@ img.profile-photo-lg{
   });
   </script>
   </head>
-  <body>
+  <body class="bg-secondary">
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" name="loc" value="data.php" href="index.php">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -116,7 +130,7 @@ img.profile-photo-lg{
             session_start();
             $user_Sekarang = $_SESSION['username'];
             $sql = "SELECT * FROM user where username ='$user_Sekarang'";
-            $result = $conn -> query($sql); 
+            $result = $conn -> query($sql);
             $user=array();
 
             foreach($result as $row)
@@ -232,7 +246,7 @@ img.profile-photo-lg{
      }
      echo'</div>';
      echo'<div class="col-md-10">';
-     echo'<a class="float-left text-uppercase text-dark mb-2" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'. $row_tl->getUsernametl() .'</strong></a>';
+     echo'<a class="float-left text-uppercase text-dark mb-2" href="#"><strong>'. $row_tl->getUsernametl() .'</strong></a>';
      echo'<div class="clearfix"></div>';
      if($row_tl->getGambartl() != ''){
       echo "<img class = 'round' width = '100px' height ='100px' src='gambar_tl/".$row_tl->getGambartl()."' >";
@@ -257,7 +271,7 @@ img.profile-photo-lg{
          }
          echo'</div>';
          echo'<div class="col-md-10">';
-         echo'<p class="text-uppercase mb-0 py-0"><a class="text-dark" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'.$row_com->getCommenter().'</strong></a></p>' . '<p class="text-lowercase text-secondary">commented on '.$row_com->getTime_com().'</p>';
+         echo'<p class="text-uppercase mb-0 py-0"><a class="text-dark" href="#"><strong>'.$row_com->getCommenter().'</strong></a></p>' . '<p class="text-lowercase text-secondary">commented on '.$row_com->getTime_com().'</p>';
          echo'<p class="border-top pt-2">'. $row_com->getDeskripsi_com(). "</p>";
          echo"</div>";
          echo"</div>";

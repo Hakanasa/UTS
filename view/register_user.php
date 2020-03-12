@@ -32,14 +32,12 @@
     </style>
   </head>
 
-  <body>
-    <div>
-      <div class="section" id="section2">
-        <h1 class="my-3">Registration</h1>
-        <div class="row">
-          <aside class="col-sm-2">
-          </aside>
-        <article class="card-body col-sm-8 text-left px-5 py-5" style="background-color: rgba(255, 255, 255, 0.5);">
+  <body id="section2">
+    <div class="container" style="pl-sm-0 pr-sm-0">
+      <div class="col-sm-4">
+      </div>
+        <div class="col-sm-12 text-left px-5 py-3 mt-sm-4" style="background-color: rgba(255, 255, 255, 0.5);">
+          <h1 class="text-center"><i>Registration</i></h1><br>
           <form action ="index.php" method="post" enctype="multipart/form-data">
             <div class="form-group row">
               <label class="col-lg-3 col-form-label form-control-label text-dark">Nama Depan</label>
@@ -101,11 +99,7 @@
             <button name='loc' value='login.php' class='btn btn-default'>Cancel</button>
             </div>
           </form>
-        </article>
-        <div class="col-sm-2"></div>
         </div>
-      </div>
-    </div>
 
     <script type="text/javascript" src="assets/fullpage.js"></script>
     <script type="text/javascript" src="assets/examples.js"></script>

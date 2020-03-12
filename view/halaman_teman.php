@@ -57,9 +57,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                 <?php
-                            
+
                                 $friend_user = $_POST['friend_user'];
-                                print_r($friend_user);
                                 $sql = "SELECT * FROM user where username ='$friend_user'";
                                 $result = $conn -> query($sql);
                                 $user=array();
