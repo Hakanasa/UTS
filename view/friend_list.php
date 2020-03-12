@@ -11,10 +11,10 @@
 </head>
 <body class="bg-secondary">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <a class="navbar-brand" name="loc" value="data.php" href="index.php">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
     <div class="collapse navbar-collapse d-flex flex-row-reverse" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <form action="index.php" method="post" class="px-2">
@@ -66,7 +66,7 @@
                             $row['profile_deskripsi']
                         )
             );
-        
+
 
                 foreach($result_fr as $row_fr)
                 array_push(
@@ -76,16 +76,16 @@
                             $row_fr['friend']
                         )
                 );
-                
+
                 foreach($user as $row){
-                    
+
                     foreach($user_fr as $row_fr){
                         $sql_friend = "SELECT * FROM friend,user
                             where user.username = '" . $row_fr->getFriend() . "' group by friend.friend;";
                         $hasil_friend = $conn -> query($sql_friend);
-        
+
                         while($row3 = $hasil_friend->fetch_assoc()) {
-                
+
                             if($row->getUsername() == $row3['friend'] ){
                                 echo '<form method="post" action="index/php">';
                                 echo $row3['nama_depan'].' '.$row3['nama_belakang'].'<br>';
@@ -97,9 +97,9 @@
                                 echo "</form>";
                             }
                         }
-                
+
                     }
-                
+
                 }
             ?>
             <button type='submit' name='submit'>Back </button>

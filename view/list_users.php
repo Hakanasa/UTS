@@ -40,7 +40,7 @@ img.profile-photo-lg{
   </head>
   <body class="bg-secondary">
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" name="loc" value="data.php" href="index.php">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
