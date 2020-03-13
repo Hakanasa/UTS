@@ -29,11 +29,6 @@
         </form>
         <form action="index.php" method="post" class="px-2">
             <div>
-                <button type='submit' name='loc' value='friend_list.php' class='btn btn-secondary' style="float: right">Friends</button>
-            </div>
-        </form>
-        <form action="index.php" method="post" class="px-2">
-            <div>
                 <input type='hidden' name='do' value='logout.php'>
                 <button type='submit' name='loc' value='login.php' class='btn btn-secondary' style="float: right">Logout</button>
             </div>
