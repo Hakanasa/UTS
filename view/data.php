@@ -256,17 +256,17 @@ img.profile-photo-lg{
      echo"<p class='text-dark border-top pt-2'>". $row_tl->getDeskripsitl(). "<p>";
      echo"</div>";
      //dropdown
-     echo'<div class="col-md-2 dropdown" style="z-index: 1000;">';
-     echo'<div class="hamburger hamburger--spin-r px-0 py-0" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-     echo'<div class="hamburger-box">';
-     echo'<div class="hamburger-inner"></div>';
-     echo'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
-     echo'<a class="dropdown-item" href="#">Edit</a>';
-     echo'<a class="dropdown-item" href="#">Delete</a>';
-     echo'</div>';
-     echo'</div>';
-     echo'</div>';
-     echo'</div>';
+     //echo'<div class="col-md-2 dropdown" style="z-index: 1000;">';
+     //echo'<div class="hamburger hamburger--spin-r px-0 py-0" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+     //echo'<div class="hamburger-box">';
+     //echo'<div class="hamburger-inner"></div>';
+     //echo'<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">';
+     //echo'<a class="dropdown-item" href="#">Edit</a>';
+     //echo'<a class="dropdown-item" href="#">Delete</a>';
+    // echo'</div>';
+     //echo'</div>';
+     //echo'</div>';
+     //echo'</div>';
      //end dropdown
      echo"</div>";
 
