@@ -228,6 +228,11 @@ img.profile-photo-lg{
            )
    );
    foreach($user_tl as $row_tl){
+     $id = $row_tl->getPostid();
+   }
+   $_SESSION['id'] = $id+1;
+
+   foreach($user_tl as $row_tl){
      $sql_post = "SELECT * FROM timeline as t join user as u on (u.username = t.username)
                   where u.username = '" . $row_tl->getUsernametl() . "' group by t.username;";
      $hasil = $conn -> query($sql_post);
