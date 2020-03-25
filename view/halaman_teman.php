@@ -57,8 +57,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                 <?php
-
+                                session_start();
                                 $friend_user = $_POST['friend_user'];
+                                $_SESSION['friend_ids'] = $friend_user;
                                 $sql = "SELECT * FROM user where username ='$friend_user'";
                                 $result = $conn -> query($sql);
                                 $user=array();
@@ -117,6 +118,13 @@
                                       <input type='hidden' name='loc' value='data.php'>
                                       <button type="submit" class="btn btn-secondary" value="data.php">Back</button>
                                       </form>
+                                      <br>
+                                      
+                                      <form action = "index.php" method="post">
+                                      <input type='hidden' name='do' value='delete_friend.php'>
+                                      <button type="submit" class="btn btn-danger" value="data.php">Unfriend</button>
+                                      </form>
+                                      
                                     </p>
                                 </div>
                             </div>
