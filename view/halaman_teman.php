@@ -25,7 +25,7 @@
       
         <form action="index.php" method="post" class="px-2">
     		    <div>
-                <button type='submit' name='loc' value='friend_list.php' class='btn btn-secondary' style="float: right">Friends</button>
+                <button type='submit' name='loc' value='list_users.php' class='btn btn-secondary' style="float: right">Add Friends</button>
     		    </div>
     	  </form>
         <form action="index.php" method="post" class="px-2">
