@@ -13,19 +13,21 @@
 
     $check_sql = "SELECT * from user where username='$username'";
 
+    $result = mysqli_query($conn,$check_sql);
+
     $check_username = strcmp($username,'');
 
     $ket = move_uploaded_file($_FILES['foto']['tmp_name'], "gambar/".$_FILES['foto']['name']);
 
-    if($check_sql==0){
+    if(mysqli_num_rows($result)<1){
         $insert_sql = "INSERT INTO User (nama_depan, nama_belakang, tanggal_lahir, jenis_kelamin, username, password, gambar, profile_deskripsi)
             VALUES ('$n_depan','$n_belakang', '$tanggal_lahir', '$jenis_kelamin','$username','$password','$foto','$deskripsi')";
         mysqli_query($conn,$insert_sql);
 
         echo '<script>alert("Berhasil Register");</script>';
     }
-    elseif ($check_sql>0) {
-      echo '<script>alert("Username Sudah Digunakan Silahkan Coba Lagi")';
+    else{
+      echo '<script>alert("Username Sudah Digunakan Silahkan Coba Lagi");</script>';
     }
 }
 
